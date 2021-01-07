@@ -1,5 +1,9 @@
 # joplin-proxy-docker
 
+THIS IMAGE IS IN DEVELOPMENT.
+
+!NOT WORKING!
+
 Run Joplin Desktop App behind HTTP Proxy.
 
 - Joplin: https://joplinapp.org/
