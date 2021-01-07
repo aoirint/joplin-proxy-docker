@@ -2,11 +2,16 @@ FROM aoirint/transproxy:node
 
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
+ARG NO_PROXY
 
 ARG JOPLIN_URL=https://github.com/laurent22/joplin
 ARG JOPLIN_CHECKOUT=9cb576889f98c15e860ceae9df5763cccf126a1f
 
-RUN apt update && apt install -y \
+RUN  { \
+    echo 'Acquire::http::proxy "'${HTTP_PROXY}'";'; \
+    echo 'Acquire::https::proxy "'${HTTPS_PROXY}'";'; \
+} | tee /etc/apt/apt.conf && \
+    apt update && apt install -y \
         git \
         rsync \
         libnss3 \
@@ -20,6 +25,7 @@ RUN apt update && apt install -y \
         libasound2-dev \
         fonts-noto \
         gosu && \
+    rm /etc/apt/apt.conf && \
     fc-cache && \
     useradd -m joplin && \
     gosu joplin git clone ${JOPLIN_URL} /home/joplin/joplin && \
