@@ -1,5 +1,8 @@
 #!/bin/bash
 
+usermod -u ${HOST_UID} joplin
+groupmod -g ${HOST_GID} joplin
+
 bash -c "transproxy -disable-iptables -dns-over-https-enabled" &
 
 # iptables -t nat -I OUTPUT -p tcp --dport 53 -j REDIRECT --to-ports 3131

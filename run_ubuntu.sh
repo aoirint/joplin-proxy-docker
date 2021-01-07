@@ -8,6 +8,8 @@ docker run --rm -it \
   -e HTTP_PROXY \
   -e HTTPS_PROXY \
   -e NO_PROXY \
+  -e "HOST_UID=$(id -u)" \
+  -e "HOST_GID=$(id -g)" \
   -v "$PWD/docker/docker-entrypoint.sh:/docker-entrypoint.sh" \
   -e DISPLAY=unix:0.0 \
   --gpus all \
