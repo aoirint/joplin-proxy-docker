@@ -26,6 +26,7 @@ RUN  { \
         fonts-noto \
         gosu && \
     rm /etc/apt/apt.conf && \
+    rm -rf /var/lib/apt/lists/* && \
     fc-cache && \
     gosu node git clone ${JOPLIN_URL} /home/node/joplin && \
     cd /home/node/joplin && \
