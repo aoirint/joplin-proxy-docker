@@ -18,7 +18,9 @@ RUN apt update && apt install -y \
         libatk-bridge2.0-dev \
         libgtk-3-dev \
         libasound2-dev \
+        fonts-noto \
         gosu && \
+    fc-cache && \
     useradd -m joplin && \
     gosu joplin git clone ${JOPLIN_URL} /home/joplin/joplin && \
     cd /home/joplin/joplin && \
