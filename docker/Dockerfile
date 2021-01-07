@@ -31,6 +31,5 @@ RUN apt update && apt install -y \
     chmod 4755 ./node_modules/electron/dist/chrome-sandbox && \
     gosu joplin npm run env -- gulp build
 
-USER joplin
 WORKDIR "/home/joplin/joplin/packages/app-desktop"
 CMD [ "npm", "run", "env", "--", "electron", "." ]

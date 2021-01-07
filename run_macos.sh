@@ -7,6 +7,8 @@ SCRIPT_DIR=$(dirname $(realpath $0))
 docker run --rm -it \
   -e HTTP_PROXY \
   -e HTTPS_PROXY \
+  -e NO_PROXY \
+  -v "$PWD/docker/docker-entrypoint.sh:/docker-entrypoint.sh" \
   -e DISPLAY=host.docker.internal:0 \
   --cap-add=NET_ADMIN \
   -v /dev/shm:/dev/shm \

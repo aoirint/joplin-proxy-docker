@@ -13,6 +13,10 @@ Run Joplin Desktop App behind HTTP Proxy.
 ## How to run
 Download `run_*.sh`, `chrome.json` into a directory and follow instructions below.
 
+Set `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY` env vars.
+`NO_PROXY` is also IMPORTANT!
+(ex. `export NO_PROXY=192.168.0.0/24,172.16.0.0/16`)
+
 ### macOS
 1. Run `xhost + localhost`.
 2. Execute `run_macos.sh`.
