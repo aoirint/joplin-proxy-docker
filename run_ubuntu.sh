@@ -10,7 +10,6 @@ docker run --rm -it \
   -e NO_PROXY \
   -e "HOST_UID=$(id -u)" \
   -e "HOST_GID=$(id -g)" \
-  -v "$PWD/docker/docker-entrypoint.sh:/docker-entrypoint.sh" \
   -e DISPLAY=unix:0.0 \
   --gpus all \
   --cap-add=NET_ADMIN \
