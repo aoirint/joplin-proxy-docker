@@ -15,6 +15,6 @@ docker run --rm -it \
   --cap-add=NET_ADMIN \
   -v /dev/shm:/dev/shm \
   -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
-  -v "${HOME}/.config/joplin-desktop:/home/joplin/.config/joplin-desktop" \
+  -v "${HOME}/.config/joplin-desktop:/home/node/.config/joplin-desktop" \
   --security-opt "seccomp=${SCRIPT_DIR}/chrome.json" \
   aoirint/joplin-proxy "$@"
