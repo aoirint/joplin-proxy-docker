@@ -36,5 +36,8 @@ RUN  { \
     chmod 4755 ./node_modules/electron/dist/chrome-sandbox && \
     gosu node npm run env -- gulp build
 
+ADD ./docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+
 WORKDIR "/home/node/joplin/packages/app-desktop"
 CMD [ "npm", "run", "env", "--", "electron", "." ]
