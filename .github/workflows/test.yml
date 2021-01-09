@@ -1,0 +1,15 @@
+name: Test Docker image build
+
+on:  push
+
+jobs:
+  dockerhub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build
+        if: success()
+        uses: actions-hub/docker@master
+        with:
+          args: build ./docker/
