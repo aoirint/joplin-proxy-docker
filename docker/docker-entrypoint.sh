@@ -2,8 +2,13 @@
 
 set -u
 
-usermod -u "${HOST_UID}" node
-groupmod -g "${HOST_GID}" node
+# For Docker Desktop, changing owner id of many files is very slow and unnecessary.
+# So disable this with USE_CONTAINER_UID=1
+# For Linux Docker, USE_CONTAINER_UID=0 in order to use the same user id as the host user id.
+if [[ "${USE_CONTAINER_UID:-0}" == "0" ]]; then
+  usermod -u "${HOST_UID}" node
+  groupmod -g "${HOST_GID}" node
+fi
 
 set -eu
 

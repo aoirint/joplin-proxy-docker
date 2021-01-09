@@ -8,8 +8,7 @@ docker run --rm -it \
   -e HTTP_PROXY \
   -e HTTPS_PROXY \
   -e NO_PROXY \
-  -e "HOST_UID=$(id -u)" \
-  -e "HOST_GID=$(id -g)" \
+  -e "USE_CONTAINER_UID=1" \
   -e DISPLAY=host.docker.internal:0 \
   --cap-add=NET_ADMIN \
   -v /dev/shm:/dev/shm \
