@@ -7,15 +7,13 @@ Run Joplin Desktop App behind HTTP Proxy.
 
 
 ## How to run
-Download `run_*.sh`, `chrome.json` into a directory and follow instructions below.
-
-Set `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY` env vars.
+1. Download `run_*.sh`, `chrome.json` from [aoirint/joplin-proxy-docker](https://github.com/aoirint/joplin-proxy-docker) into a directory.
+2. Set `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY` env vars.
 `NO_PROXY` is also IMPORTANT!
 (ex. `export NO_PROXY=192.168.0.0/16,172.16.0.0/16`)
 
 ### Ubuntu
-1. Run `xhost + local:joplin`.
-2. Execute `run_ubuntu.sh`.
+1. Execute `run_ubuntu.sh`.
 
 ### macOS / xQuartz (GUI is slow)
 1. Run `xhost + localhost`.
