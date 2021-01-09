@@ -31,8 +31,9 @@ RUN  { \
     gosu node git clone ${JOPLIN_URL} /home/node/joplin && \
     cd /home/node/joplin && \
     gosu node git checkout ${JOPLIN_CHECKOUT} && \
+    rm -rf ./packages/app-cli ./packages/app-clipper ./packages/app-mobile ./packages/server/ && \
     gosu node npm install && \
-    cd /home/node/joplin/packages/app-desktop && \
+    cd ./packages/app-desktop && \
     chown root:root ./node_modules/electron/dist/chrome-sandbox && \
     chmod 4755 ./node_modules/electron/dist/chrome-sandbox && \
     gosu node npm run env -- gulp build
