@@ -5,7 +5,7 @@ ARG HTTPS_PROXY
 ARG NO_PROXY
 
 ARG JOPLIN_URL=https://github.com/laurent22/joplin
-ARG JOPLIN_CHECKOUT=9cb576889f98c15e860ceae9df5763cccf126a1f
+ARG JOPLIN_CHECKOUT=309a97fb5ba6cda2e29a1f07daec00fce8f5310d
 
 RUN  { \
     echo 'Acquire::http::proxy "'${HTTP_PROXY}'";'; \
