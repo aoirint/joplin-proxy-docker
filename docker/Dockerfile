@@ -1,4 +1,4 @@
-FROM aoirint/transproxy:2021.3-node
+FROM aoirint/transproxy:node
 
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
