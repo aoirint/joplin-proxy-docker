@@ -22,7 +22,8 @@ RUN apk add --no-cache \
         font-noto \
         su-exec \
         make \
-        g++ && \
+        g++ \
+        shadow && \
     fc-cache && \
     su-exec node git clone ${JOPLIN_URL} /home/node/joplin && \
     cd /home/node/joplin && \
