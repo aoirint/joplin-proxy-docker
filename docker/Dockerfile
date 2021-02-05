@@ -5,7 +5,7 @@ ARG HTTPS_PROXY
 ARG NO_PROXY
 
 ARG JOPLIN_URL=https://github.com/laurent22/joplin
-ARG JOPLIN_CHECKOUT=40a4c69afedc7caa6d8c1ab6b29ef401116fb35b
+ARG JOPLIN_CHECKOUT=4a9d8033fadd2dcee0c018dabc9910bc3651b3a6
 
 RUN apk add --no-cache \
         git \
