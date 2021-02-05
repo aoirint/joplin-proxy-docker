@@ -20,26 +20,18 @@ RUN apk add --no-cache \
         gtk+3.0-dev \
         alsa-lib-dev \
         font-noto \
-        su-exec && \
+        su-exec \
+        make \
+        g++ && \
     fc-cache && \
     su-exec node git clone ${JOPLIN_URL} /home/node/joplin && \
     cd /home/node/joplin && \
     su-exec node git checkout ${JOPLIN_CHECKOUT} && \
-    rm -rf ./packages/app-cli ./packages/app-clipper ./packages/app-mobile ./packages/server/
-
-RUN apk add --no-cache \
-        make \
-        g++ \
-        ca-certificates
-
-RUN cd /home/node/joplin && \
+    rm -rf ./packages/app-cli ./packages/app-clipper ./packages/app-mobile ./packages/server/ && \
     su-exec node npm install && \
     cd ./packages/app-desktop && \
     chown root:root ./node_modules/electron/dist/chrome-sandbox && \
-    chmod 4755 ./node_modules/electron/dist/chrome-sandbox
-
-RUN cd /home/node/joplin && \
-    cd ./packages/app-desktop && \
+    chmod 4755 ./node_modules/electron/dist/chrome-sandbox && \
     su-exec node npm run env -- gulp build
 
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
