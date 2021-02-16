@@ -5,7 +5,7 @@ ARG HTTPS_PROXY
 ARG NO_PROXY
 
 ARG JOPLIN_URL=https://github.com/laurent22/joplin
-ARG JOPLIN_CHECKOUT=4a9d8033fadd2dcee0c018dabc9910bc3651b3a6
+ARG JOPLIN_CHECKOUT=9bfc7d98608f01b02cd0fcbbcc9c0c9d42e9f245
 
 RUN apk add --no-cache \
         git \
@@ -28,12 +28,17 @@ RUN apk add --no-cache \
     su-exec node git clone ${JOPLIN_URL} /home/node/joplin && \
     cd /home/node/joplin && \
     su-exec node git checkout ${JOPLIN_CHECKOUT} && \
-    rm -rf ./packages/app-cli ./packages/app-clipper ./packages/app-mobile ./packages/server/ && \
+    rm -rf ./packages/app-cli ./packages/app-clipper ./packages/app-mobile ./packages/server/
+
+RUN cd /home/node/joplin && \
     su-exec node npm install && \
-    cd ./packages/app-desktop && \
+    cd /home/node/joplin/packages/app-desktop && \
     chown root:root ./node_modules/electron/dist/chrome-sandbox && \
     chmod 4755 ./node_modules/electron/dist/chrome-sandbox && \
     su-exec node npm run env -- gulp build
+
+RUN apk add --no-cache \
+        libc6-compat
 
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
