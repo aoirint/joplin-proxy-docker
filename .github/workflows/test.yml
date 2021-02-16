@@ -25,4 +25,4 @@ jobs:
         if: success()
         uses: actions-hub/docker@master
         with:
-          args: push aoirint/joplin-proxy:dev-${GITHUB_REF##*/}
+          args: push aoirint/joplin-proxy:${GITHUB_REF##*/}
