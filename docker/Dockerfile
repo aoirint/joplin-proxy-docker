@@ -6,13 +6,19 @@ ARG NO_PROXY
 
 
 ARG GLIBC_URL=https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk
+ARG GLIBC_BIN_URL=https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-bin-2.32-r0.apk
+ARG GLIBC_I18N_URL=https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-i18n-2.32-r0.apk
 
 # https://github.com/sgerrand/alpine-pkg-glibc
 RUN apk add --no-cache \
         wget && \
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
-    wget ${GLIBC_URL} && \
-    apk add glibc-2.32-r0.apk
+    wget "${GLIBC_URL}" && \
+    wget "${GLIBC_BIN_URL}" && \
+    wget "${GLIBC_I18N_URL}" && \
+    apk add glibc-2.32-r0.apk glibc-bin-2.32-r0.apk glibc-i18n-2.32-r0.apk && \
+    /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8 && \
+    /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib
 
 
 ARG TRANSPROXY_URL=https://github.com/wadahiro/go-transproxy/releases/download/v0.5.2/go-transproxy-0.5.2.tar.gz

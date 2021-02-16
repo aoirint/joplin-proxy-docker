@@ -6,6 +6,8 @@ IMAGE_TAG  = dev-alpine
 HOST_UID   = $(shell id -u)
 HOST_GID   = $(shell id -g)
 
+COMMAND    =
+
 build:
 	docker build "$(SCRIPT_DIR)/docker" \
 	  -t aoirint/joplin-proxy:$(IMAGE_TAG) \
@@ -27,4 +29,4 @@ run-ubuntu:
 	  -v /tmp/.X11-unix/:/tmp/.X11-unix/ \
 	  -v "$(HOME)/.config/joplin-desktop:/home/node/.config/joplin-desktop" \
 	  --security-opt "seccomp=$(SCRIPT_DIR)/chrome.json" \
-	  aoirint/joplin-proxy:$(IMAGE_TAG)
+	  aoirint/joplin-proxy:$(IMAGE_TAG) $(COMMAND)
