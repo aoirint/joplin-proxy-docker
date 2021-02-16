@@ -20,3 +20,9 @@ jobs:
         uses: actions-hub/docker@master
         with:
           args: build ./docker/
+
+      - name: Deploy :${GITHUB_REF##*/}
+        if: success()
+        uses: actions-hub/docker@master
+        with:
+          args: push ghcr.io/aoirint/joplin-proxy:${GITHUB_REF##*/}
