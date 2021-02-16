@@ -46,7 +46,8 @@ RUN apk add --no-cache \
         su-exec \
         make \
         g++ \
-        shadow && \
+        shadow \
+        glib && \
     fc-cache && \
     su-exec node git clone ${JOPLIN_URL} /home/node/joplin && \
     cd /home/node/joplin && \
