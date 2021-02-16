@@ -21,7 +21,7 @@ jobs:
         with:
           args: build ./docker/ -t aoirint/joplin-proxy:${GITHUB_REF##*/}
 
-      - name: Deploy :dev-BRANCH
+      - name: Deploy :BRANCH
         if: success()
         uses: actions-hub/docker@master
         with:
