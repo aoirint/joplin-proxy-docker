@@ -37,8 +37,12 @@ RUN cd /home/node/joplin && \
     chmod 4755 ./node_modules/electron/dist/chrome-sandbox && \
     su-exec node npm run env -- gulp build
 
+# https://github.com/sgerrand/alpine-pkg-glibc
 RUN apk add --no-cache \
-        libc6-compat
+        wget && \
+    wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
+    wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk && \
+    apk add glibc-2.32-r0.apk
 
 ADD ./docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
