@@ -18,7 +18,7 @@ RUN apk add --no-cache \
     wget "${GLIBC_I18N_URL}" && \
     apk add glibc-2.32-r0.apk glibc-bin-2.32-r0.apk glibc-i18n-2.32-r0.apk && \
     /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8 && \
-    /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib
+    /usr/glibc-compat/sbin/ldconfig /lib /usr/lib /usr/glibc-compat/lib
 
 
 ARG TRANSPROXY_URL=https://github.com/wadahiro/go-transproxy/releases/download/v0.5.2/go-transproxy-0.5.2.tar.gz
