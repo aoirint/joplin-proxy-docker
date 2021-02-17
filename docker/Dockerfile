@@ -1,4 +1,4 @@
-FROM aoirint/transproxy:node
+FROM aoirint/transproxy:node-ubuntu
 
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
